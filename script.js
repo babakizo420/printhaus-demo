@@ -60,6 +60,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
 });
 
+// Cookie Consent Banner (NDPA 2023)
+const cookieBanner = document.getElementById('cookie-banner');
+const acceptCookies = document.getElementById('accept-cookies');
+if (cookieBanner && acceptCookies) {
+    if (!localStorage.getItem('tta-cookies-accepted')) {
+        setTimeout(() => { cookieBanner.style.display = 'block'; }, 1200);
+    }
+    acceptCookies.addEventListener('click', () => {
+        localStorage.setItem('tta-cookies-accepted', 'true');
+        cookieBanner.style.display = 'none';
+    });
+}
+
 // Contact form
 const form = document.getElementById('contact-form');
 if (form) {
